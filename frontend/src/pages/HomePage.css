@@ -1,0 +1,346 @@
+
+/* Global RTL settings */
+* {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Logo Styles */
+.logo-container {
+    text-align: center;
+    margin: 1rem auto;
+    animation: fadeInDown 1s ease-out;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-container img {
+    height: 100px;
+    width: auto;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem;  /* Added margin-bottom */
+}
+
+.logo-container img:hover {
+    transform: scale(1.05);
+}
+
+.logo-ruvni {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    z-index: 3;
+}
+
+.logo-ruvni img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.logo-ruvni img:hover {
+    transform: scale(1.1);
+}
+
+/* Page Structure */
+.home-page {
+    min-height: 100vh;
+    background-image: url('/Users/itziklugassy/Documents/itzik-arlo/project/company-portfolio/frontend/public/backroundruvanipridan.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: overlay;
+    padding-bottom: 3rem;
+    direction: rtl;
+}
+
+.hero-section {
+    padding: 30px 0;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.hero-title {
+    color: #ffffff;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Project Grid */
+.projects-container {
+    max-width: 1400px;
+    margin: -5rem auto 0;  /* Added negative margin to reduce gap */
+    padding: 0 15px;
+}
+
+.project-card {
+    height: 450px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.vote-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(218, 0, 157, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(218, 0, 157, 0.3);
+    animation: fadeInBadge 0.3s ease-out;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.card-image-wrapper {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-out;
+}
+
+.project-card:hover .card-image {
+    transform: scale(1.1);
+}
+
+.project-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a365d;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #3498db;
+    position: relative;
+    text-align: right;
+}
+
+.project-title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 0;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(90deg, #2ecc71, #3498db);
+    transition: width 0.3s ease;
+}
+
+.project-card:hover .project-title::after {
+    width: 100%;
+}
+
+.project-description {
+    color: #2d3748;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: right;
+    padding: 0 1.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+/* Large screens - max-width: 1200px */
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .logo-container img {
+        height: 100px;
+    }
+    
+    .project-card {
+        height: 400px;
+    }
+    
+    .card-image-wrapper {
+        height: 200px;
+    }
+    
+    .project-title {
+        font-size: 1.6rem;
+    }
+}
+/* Medium screens - max-width: 992px */
+@media (max-width: 992px) {
+    .logo-ruvni img {
+        height: 40px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .logo-container img {
+        height: 90px;
+    }
+}
+/* Tablets - max-width: 768px */
+@media (max-width: 768px) {
+    .logo-ruvni {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .logo-ruvni img {
+        height: 35px;
+    }
+    
+    .home-page {
+        background-attachment: scroll;
+    }
+    
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .project-card {
+        height: 380px;
+    }
+    
+    .project-title {
+        font-size: 1.4rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .logo-container img {
+        height: 80px;
+    }
+    
+    .vote-badge {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-ruvni {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .logo-ruvni img {
+        height: 30px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        padding: 0 1rem;
+    }
+    
+    .project-card {
+        height: 360px;
+        margin: 0.5rem;
+    }
+    
+    .card-image-wrapper {
+        height: 180px;
+    }
+    
+    .logo-container img {
+        height: 70px;
+    }
+    
+    .vote-badge {
+        padding: 4px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInBadge {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading Animation */
+.loading-skeleton {
+    animation: loading 1.5s infinite;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* RTL Specific Adjustments */
+.container, .row, .col {
+    direction: rtl;
+}
+
+.card-body {
+    text-align: right;
+}
+
+.nav {
+    padding-right: 0;
+}
+
+.text-end {
+    text-align: right !important;
+}

@@ -1,0 +1,87 @@
+/* index.css */
+html {
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'arial', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: right;
+}
+
+.card-text {
+  color: #666;
+  text-align: right;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* homepage.css */
+.home-page {
+  min-height: 100vh;
+  background-image: url('/Users/itziklugassy/Documents/itzik-arlo/project/company-portfolio/frontend/public/backroundruvanipridan.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: overlay;
+}
+
+.hero-title {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+.project-title {
+  font-size: 1.5rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: right;
+}
+
+.project-description {
+  color: #cb1616;
+  line-height: 1.6;
+  flex-grow: 1;
+  text-align: right;
+}
