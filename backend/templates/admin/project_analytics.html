@@ -1,0 +1,151 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrahead %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="analytics-container">
+    <h2>Project Analytics</h2>
+    <img src="http://localhost:3000/feebackicon.png" alt="Logo" class="logo">
+    <div class="charts-container">
+        <div class="chart-box">
+            <canvas id="totalScoresChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <canvas id="avgScoresChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <canvas id="votesChart"></canvas>
+        </div>
+    </div>
+
+    {% for project in projects_data %}
+    <div class="project-card">
+        <h3>{{ project.title }}</h3>
+        <div class="stats">
+            <div>סה"כ דירוגים: {{ project.total_ratings }}</div>
+            <div>ציון כולל: {{ project.total_score }}</div>
+            <div>ממוצעים:</div>
+            <ul>
+                <li>תובנה: {{ project.avg_scores.insight|floatformat:2 }}</li>
+                <li>קונספט: {{ project.avg_scores.concept|floatformat:2 }}</li>
+                <li>ביצוע: {{ project.avg_scores.execution|floatformat:2 }}</li>
+                <li>בולטות: {{ project.avg_scores.prominence|floatformat:2 }}</li>
+                <li>גאווה: {{ project.avg_scores.pride|floatformat:2 }}</li>
+                <li>מקוריות: {{ project.avg_scores.originality|floatformat:2 }}</li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+const chartColors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'];
+
+const labels = JSON.parse('{{ chart_data.labels|safe }}');
+const totalScores = JSON.parse('{{ chart_data.total_scores|safe }}');
+const avgScores = JSON.parse('{{ chart_data.avg_scores|safe }}');
+const totalVotes = JSON.parse('{{ chart_data.total_votes|safe }}');
+
+new Chart(document.getElementById('totalScoresChart'), {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: totalScores,
+            backgroundColor: chartColors
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'סה"כ ניקוד לפי פרויקט'
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById('avgScoresChart'), {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: avgScores,
+            backgroundColor: chartColors
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'ציון ממוצע לפי פרויקט'
+            }
+        }
+    }
+});
+
+new Chart(document.getElementById('votesChart'), {
+    type: 'pie',
+    data: {
+        labels: labels,
+        datasets: [{
+            data: totalVotes,
+            backgroundColor: chartColors
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'מספר הצבעות לפי פרויקט'
+            }
+        }
+    }
+});
+</script>
+
+<style>
+.analytics-container {
+    padding: 20px;
+    direction: rtl;
+    color: black; /* Add this */
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chart-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stats {
+    margin-top: 10px;
+}
+
+.stats ul {
+    list-style: none;
+    padding-right: 20px;
+}
+</style>
+{% endblock %}
